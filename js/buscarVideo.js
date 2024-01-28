@@ -9,13 +9,16 @@ async function buscarVideo(event) {
 
     const lista = document.querySelector("[data-lista]");
 
-while (lista.firstChild) {
-    lista.removeChild(lista.firstChild)
-}
+    while (lista.firstChild) {
+        lista.removeChild(lista.firstChild)
+    }
 
     busca.forEach(element => lista.appendChild(
-        constroiCard(element.titulo, element.descricao, element.url, element.imagem)
-    ));
+        constroiCard(element.titulo, element.descricao, element.url, element.imagem)));
+
+        if (busca.length == 0) {
+            lista.innerHTML = `<h2 class='mensagem__titulo'>Desculpa ): Não foi possível encontrar vídeos relacionados a "${termoPesquisa}".</h2>`
+        }
 }
 
 const btnPesquisa = document.querySelector("[data-btn-pesquisa]");
